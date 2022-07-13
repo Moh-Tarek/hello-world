@@ -12,15 +12,15 @@ jobs:
       - checkout
       - run: echo "hello world" > output.txt
       - persist_to_workspace:
-          root: /tmp/dir
+          root: workspace
           paths:
-            - /tmp/dir/output.txt
+            - output.txt
   print_output_file:
     docker:
       - image: alpine:latest
     steps:
       - attach_workspace:
-          at: /tmp/dir
+          at: /tmp/workspace
       - run: cat output.txt
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
