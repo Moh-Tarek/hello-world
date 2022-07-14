@@ -21,7 +21,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - print_pipeline_id
-      
+
   save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
@@ -43,6 +43,7 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
+      - print_pipe_id
       - save_hello_world_output
       - print_output_file:
           requires:
